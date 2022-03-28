@@ -1,25 +1,36 @@
 import logo from './logo.svg';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Forum from "./pages/Forum.js"; 
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+
+
+  state = {username: ""}
+
+  handleCallback = (childData) => {
+    this.setState({name: childData})
+  }
+
+  // Sets up links to other .js files acting as application 'pages' 
+    //The Router allows the app to swtich to the different pages via the Sidebar
+
+  render(){
+    return (
+      <Router>
+        <Sidebar />
+        <Switch>
+        <Route exact path="/Home" render={() => (
+        
+          <Home Message={'Hi ' + this.state.username + '!'} />
+    )}/>
+        <Route path='/Profile' exact component={() => <Profile name={this.state.username} stylepath={this.state.stylePath}/>} />
+        </Switch>
+      </Router>
+    );
+        }
 }
 
 export default App;
+
