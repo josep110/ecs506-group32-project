@@ -1,10 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-class Forum extends React.Component {
+class Help extends React.Component {
 
     constructor(props){
-        console.log("forum")
         super(props)
     }
 
@@ -14,11 +13,11 @@ class Forum extends React.Component {
     render(){
         return(
             <div>
-                <h1>Forum here.</h1>
+                <h1>Help here.</h1>
             </div>
         )
     }
 
 }
 
-export default Forum;
+export default Help;

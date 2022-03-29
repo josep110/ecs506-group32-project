@@ -1,6 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Forum from "./pages/Forum.js"; 
 import React from 'react';
+import Forum from "./pages/Forum.js"; 
+import Home from "./pages/Home.js";
+import Help from './pages/Help.js';
+import Layout from "./pages/Layout.js";
 import './App.css';
 
 class App extends React.Component {
@@ -16,10 +19,15 @@ class App extends React.Component {
     // The Router allows the app to switch to the different pages from user interface.
 
   render(){
+    console.log("render")
     return (
       <Router>
         <Routes>
-          <Route path='/Forum' render={() => <Forum />} />
+          <Route path="/" element = {<Layout />}>
+            <Route path='/Home' index element={<Home />}/>
+            <Route path='/Forum' element={<Forum />}/>
+            <Route path='/Help' element={<Help />}/>
+          </Route>
         </Routes>
       </Router>
     );
